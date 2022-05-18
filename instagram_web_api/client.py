@@ -308,12 +308,15 @@ class Client(object):
         return media_id
 
     @staticmethod
+    # def _extract_rhx_gis(html):
+    #     mobj = re.search(
+    #         r'"rhx_gis":"(?P<rhx_gis>[a-f0-9]{32})"', html, re.MULTILINE)
+    #     if mobj:
+    #         return mobj.group('rhx_gis')
+    #     return None
     def _extract_rhx_gis(html):
-        mobj = re.search(
-            r'"rhx_gis":"(?P<rhx_gis>[a-f0-9]{32})"', html, re.MULTILINE)
-        if mobj:
-            return mobj.group('rhx_gis')
-        return None
+        tmp_str = ':{"id":"'+f'{random.randint(10000000,99999999)}'+'"}'
+        return hashlib.md5(b'tmp_str')
 
     @staticmethod
     def _extract_csrftoken(html):
